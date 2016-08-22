@@ -1,5 +1,7 @@
 package cdp;
 
+import util.Util;
+
 public class Complexo {
 	private float r;
 	private float i;
@@ -54,6 +56,17 @@ public class Complexo {
 		return resultado;
 	}	
 	
+	/**
+     * Método responsável por ler uma string e criar um objeto Complexo.
+     * @param numeroComplexo - String com o número complexo.
+     * @return 
+     * */
+	public Complexo stringParaComplexo(String numeroComplexo){
+		Util util = new Util();
+		numeroComplexo = util.stringReversa(numeroComplexo);
+
+		return new Complexo();
+	}
 	@Override
 	public String toString() {
 		return "(r=" + r + ", i=" + i + "i )";

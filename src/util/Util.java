@@ -48,13 +48,14 @@ public class Util {
     }
     
     /**
-     * Método responsável por ler uma string e criar um objeto Complexo.
-     * @param numeroComplexo - String com o número complexo.
-     * @return 
-     * */
-	public Complexo stringParaComplexo(String numeroComplexo){
-		
-		return new Complexo();
-	}
+     * Método responsável por inverter a ordem dos caracteres de uma string.     *
+     * @param string
+     * @return stringReversa
+     */
+    public String stringReversa(String string){
+    	
+    	String stringReversa = new StringBuffer(string).reverse().toString();      	
+    	return stringReversa;    	
+    }
     
 }
