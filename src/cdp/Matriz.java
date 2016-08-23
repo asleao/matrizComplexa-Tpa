@@ -15,9 +15,10 @@ public class Matriz implements IMatriz {
 		this.colunas = colunas;
 		this.conteudo = new LinkedList();
 	}
-	
+
 	/**
 	 * Método responsável por retornar um valor específico de uma matriz.
+	 * 
 	 * @param linha
 	 * @param coluna
 	 * @return valor encontrado
@@ -26,24 +27,33 @@ public class Matriz implements IMatriz {
 		if ((linha < 0 || linha >= linhas) || (coluna < 0 || coluna >= colunas)) {
 			return null;
 		}
+		Elemento elementoAuxiliar = null;
+		boolean elementoEncontrado = false;
 		for (int i = 0; i < conteudo.size(); i++) {
 			Elemento elementoRetornado = conteudo.get(i);
 			if (elementoRetornado.getValor() != null) {
-				return elementoRetornado;
+				elementoEncontrado = true;
+				elementoAuxiliar = elementoRetornado;
 			}
 		}
-		return null;
+		if (elementoEncontrado) {
+			return elementoAuxiliar;
+		} else {
+			return null;
+		}
 	}
-	
-	public void set(int linha, int coluna, Float valor){
-		if (!(linha < 0 || linha >= linhas) || !(coluna < 0 || coluna >= colunas) && (valor!=0)) {			
+
+	public void set(int linha, int coluna, Float valor) {
+		if (!(linha < 0 || linha >= linhas) || !(coluna < 0 || coluna >= colunas) && (valor != 0)) {
 			Elemento elementoRetornado = this.get(linha, coluna);
 			elementoRetornado.setLinha(linha);
 			elementoRetornado.setColuna(coluna);
 			elementoRetornado.setValor(valor);
 			conteudo.add(elementoRetornado);
-		}			
+
+		}
 	}
+
 	@Override
 	public MatrizTest soma(MatrizTest matriz) {
 		// TODO Auto-generated method stub
