@@ -16,6 +16,14 @@ public class Matriz implements IMatriz {
 		this.conteudo = new LinkedList();
 	}
 
+	public LinkedList<Elemento> getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(LinkedList<Elemento> conteudo) {
+		this.conteudo = conteudo;
+	}
+	
 	/**
 	 * Método responsável por retornar um valor específico de uma matriz.
 	 * 
@@ -44,15 +52,18 @@ public class Matriz implements IMatriz {
 		}
 	}
 
-	public void set(int linha, int coluna, Float valor) {
-		if (!(linha < 0 || linha > linhas) || !(coluna < 0 || coluna > colunas) && (valor != 0)) {
+	public String set(int linha, int coluna, Float valor) {
+		if ((!(linha < 0 || linha > linhas) && !(coluna < 0 || coluna > colunas)) && !(valor.equals(new Float(0)) )) {
 			Elemento elementoRetornado = this.get(linha, coluna);
 
 			if (elementoRetornado == null) {
 				elementoRetornado = new Elemento();
 			}
 			conteudo.add(new Elemento(linha, coluna, valor));
-		}		
+			return "Sucesso";
+		} else {
+			return null;
+		}	
 		
 	}
 
@@ -90,14 +101,6 @@ public class Matriz implements IMatriz {
 	public MatrizTest diagonalSecundaria() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public LinkedList<Elemento> getConteudo() {
-		return conteudo;
-	}
-
-	public void setConteudo(LinkedList<Elemento> conteudo) {
-		this.conteudo = conteudo;
-	}
+	}	
 
 }

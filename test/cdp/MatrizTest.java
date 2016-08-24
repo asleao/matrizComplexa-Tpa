@@ -52,5 +52,14 @@ public class MatrizTest {
 			}
 		}
 	}
-		
+	
+	/**
+	 * Testa se a matriz aceita a inserção de zeros.
+	 */
+	
+	@Test
+	public void testInsercaoZero(){
+		matriz.set(1, 1, new Float(0));
+		Assert.assertEquals(null, matriz.get(1, 1));
+	}
 }
