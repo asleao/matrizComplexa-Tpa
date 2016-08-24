@@ -91,9 +91,8 @@ public class MatrizTest {
 	 * Testa a multiplicação de todos os elementos de uma matriz por um valor N.
 	 */
 	@Test
-	public void testMultiplicacaoMatriz(){
-		Matriz matrizA = alimentaMatriz(3, 3);
-		Matriz matrizB = alimentaMatriz(3, 3);
+	public void testMultiplicacaoMatrizPorN(){
+		Matriz matrizA = alimentaMatriz(3, 3);		
 		Matriz matrizMultiplicada = matrizA.multiplica(2);
 		
 		for (int i = 1; i <= 3; i++) {
@@ -101,6 +100,20 @@ public class MatrizTest {
 				Assert.assertEquals(new Float(i*2), matrizMultiplicada.get(i, j).getValor());
 			}
 		}
+		
+	}
+	
+	/**
+	 * Testa a multiplicacao de duas matrizes.
+	 */
+	
+	@Test
+	public void testMultiplicacaoMatriz(){
+		Matriz matrizA = alimentaMatriz(3, 3);
+		Matriz matrizB = alimentaMatriz(3, 3);
+		Matriz matrizMultiplicada = matrizA.multiplica(matrizB);
+		util.imprime(matrizA.getConteudo());
+//		util.imprime(matrizMultiplicada.getConteudo());
 		
 	}
 }

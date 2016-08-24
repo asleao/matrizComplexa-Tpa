@@ -96,8 +96,19 @@ public class Matriz implements IMatriz {
 	}
 
 	public Matriz multiplica(Matriz matriz) {
-		// TODO Auto-generated method stub
-		return null;
+		Matriz matrizResultante = new Matriz(linhas, colunas);
+		if ((matriz.getLinhas() == this.linhas) && (matriz.getColunas() == this.colunas)) {
+			for (int i = 1; i <= linhas; i++) {
+				for (int j = 1; j <= colunas; j++) {
+					int proxI= i+1;
+					int proxJ= j+1;
+					Float valorUm = this.get(i, j).getValor() * matriz.get(i, j).getValor();
+					Float valorDois = this.get(i, proxJ).getValor() * matriz.get(proxI, j).getValor();
+					matrizResultante.set(i, j, (valorUm+valorDois));
+				}
+			}
+		}
+		return matrizResultante;
 	}
 
 	public Matriz multiplica(int valor) {
