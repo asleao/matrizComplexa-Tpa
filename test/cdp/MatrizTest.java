@@ -77,14 +77,30 @@ public class MatrizTest {
 	@Test
 	public void testSomaMatriz() {
 		Matriz matrizA = alimentaMatriz(3, 3);
-		Matriz matrizB = alimentaMatriz(3, 3);	
+		Matriz matrizB = alimentaMatriz(3, 3);
 		Matriz matrizSomada = matrizA.soma(matrizB);
-		
+
 		for (int i = 1; i <= 3; i++) {
-			for (int j = 1; j <= 3; j++) {				
-				Assert.assertEquals(new Float(i+i), matrizSomada.get(i, j).getValor());
+			for (int j = 1; j <= 3; j++) {
+				Assert.assertEquals(new Float(i + i), matrizSomada.get(i, j).getValor());
 			}
 		}
-
+	}
+	
+	/**
+	 * Testa a multiplicação de todos os elementos de uma matriz por um valor N.
+	 */
+	@Test
+	public void testMultiplicacaoMatriz(){
+		Matriz matrizA = alimentaMatriz(3, 3);
+		Matriz matrizB = alimentaMatriz(3, 3);
+		Matriz matrizMultiplicada = matrizA.multiplica(2);
+		
+		for (int i = 1; i <= 3; i++) {
+			for (int j = 1; j <= 3; j++) {
+				Assert.assertEquals(new Float(i*2), matrizMultiplicada.get(i, j).getValor());
+			}
+		}
+		
 	}
 }

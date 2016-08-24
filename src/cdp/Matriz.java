@@ -101,8 +101,13 @@ public class Matriz implements IMatriz {
 	}
 
 	public Matriz multiplica(int valor) {
-		// TODO Auto-generated method stub
-		return null;
+		Matriz matrizResultante = new Matriz(linhas, colunas);
+		for (int i = 1; i <= linhas; i++) {
+			for (int j = 1; j <= colunas; j++) {
+				matrizResultante.set(i, j, (this.get(i, j).getValor() * valor));
+			}
+		}
+		return matrizResultante;
 	}
 
 	public Matriz transposta() {
