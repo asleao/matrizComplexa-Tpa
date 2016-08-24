@@ -16,6 +16,22 @@ public class Matriz implements IMatriz {
 		this.conteudo = new LinkedList();
 	}
 
+	public int getLinhas() {
+		return linhas;
+	}
+
+	public void setLinhas(int linhas) {
+		this.linhas = linhas;
+	}
+
+	public int getColunas() {
+		return colunas;
+	}
+
+	public void setColunas(int colunas) {
+		this.colunas = colunas;
+	}
+
 	public LinkedList<Elemento> getConteudo() {
 		return conteudo;
 	}
@@ -23,7 +39,7 @@ public class Matriz implements IMatriz {
 	public void setConteudo(LinkedList<Elemento> conteudo) {
 		this.conteudo = conteudo;
 	}
-	
+
 	/**
 	 * Método responsável por retornar um valor específico de uma matriz.
 	 * 
@@ -53,7 +69,7 @@ public class Matriz implements IMatriz {
 	}
 
 	public String set(int linha, int coluna, Float valor) {
-		if ((!(linha < 0 || linha > linhas) && !(coluna < 0 || coluna > colunas)) && !(valor.equals(new Float(0)) )) {
+		if ((!(linha < 0 || linha > linhas) && !(coluna < 0 || coluna > colunas)) && !(valor.equals(new Float(0)))) {
 			Elemento elementoRetornado = this.get(linha, coluna);
 
 			if (elementoRetornado == null) {
@@ -63,44 +79,45 @@ public class Matriz implements IMatriz {
 			return "Sucesso";
 		} else {
 			return null;
-		}	
-		
+		}
+
 	}
 
-	@Override
-	public MatrizTest soma(MatrizTest matriz) {
+	public Matriz soma(Matriz matriz) {
+		Matriz matrizResultante = new Matriz(linhas, colunas);
+		if ((matriz.getLinhas() == this.linhas) && (matriz.getColunas() == this.colunas)) {
+			for (int i = 1; i <= linhas; i++) {
+				for (int j = 1; j <= colunas; j++) {
+					matrizResultante.set(i, j, (this.get(i, j).getValor() + matriz.get(i, j).getValor()));
+				}
+			}
+		}
+		return matrizResultante;
+	}
+
+	public Matriz multiplica(Matriz matriz) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public MatrizTest multiplica(MatrizTest matriz) {
+	public Matriz multiplica(int valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public MatrizTest multiplica(int valor) {
+	public Matriz transposta() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public MatrizTest transposta() {
+	public Matriz diagonalPrincipal() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public MatrizTest diagonalPrincipal() {
+	public Matriz diagonalSecundaria() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public MatrizTest diagonalSecundaria() {
-		// TODO Auto-generated method stub
-		return null;
-	}	
 
 }

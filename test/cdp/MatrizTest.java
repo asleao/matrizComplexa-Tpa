@@ -9,10 +9,12 @@ import util.Util;
 public class MatrizTest {
 
 	private Matriz matriz;
+	private Util util;
 
 	@Before
 	public void setUp() throws Exception {
 		matriz = new Matriz(3, 3);
+		util = new Util();
 	}
 
 	/**
@@ -38,11 +40,7 @@ public class MatrizTest {
 	 */
 	@Test
 	public void testBuscarElementoMatriz() {
-		for (int i = 1; i <= 3; i++) {
-			for (int j = 1; j <= 3; j++) {
-				matriz.set(i, j, new Float(i));
-			}
-		}
+		matriz = alimentaMatriz(3, 3);
 
 		for (int i = 1; i <= 3; i++) {
 			for (int j = 1; j <= 3; j++) {
@@ -52,14 +50,41 @@ public class MatrizTest {
 			}
 		}
 	}
-	
+
+	private Matriz alimentaMatriz(int linhas, int colunas) {
+		Matriz objetoMatriz = new Matriz(linhas, colunas);
+		for (int i = 1; i <= linhas; i++) {
+			for (int j = 1; j <= colunas; j++) {
+				objetoMatriz.set(i, j, new Float(i));
+			}
+		}
+		return objetoMatriz;
+	}
+
 	/**
 	 * Testa se a matriz aceita a inserção de zeros.
 	 */
-	
+
 	@Test
-	public void testInsercaoZero(){
+	public void testInsercaoZero() {
 		matriz.set(1, 1, new Float(0));
 		Assert.assertEquals(null, matriz.get(1, 1));
+	}
+
+	/**
+	 * Testa a soma de matrizes.
+	 */
+	@Test
+	public void testSomaMatriz() {
+		Matriz matrizA = alimentaMatriz(3, 3);
+		Matriz matrizB = alimentaMatriz(3, 3);	
+		Matriz matrizSomada = matrizA.soma(matrizB);
+		
+		for (int i = 1; i <= 3; i++) {
+			for (int j = 1; j <= 3; j++) {				
+				Assert.assertEquals(new Float(i+i), matrizSomada.get(i, j).getValor());
+			}
+		}
+
 	}
 }

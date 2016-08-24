@@ -1,12 +1,12 @@
 package cdp.interfaces;
 
-import cdp.MatrizTest;
+import cdp.Matriz;
 
 public interface IMatriz {
-	public MatrizTest soma(MatrizTest matriz);
-	public MatrizTest multiplica(MatrizTest matriz);
-	public MatrizTest multiplica(int valor);
-	public MatrizTest transposta();
-	public MatrizTest diagonalPrincipal();
-	public MatrizTest diagonalSecundaria();	
+	public Matriz soma(Matriz matriz);
+	public Matriz multiplica(Matriz matriz);
+	public Matriz multiplica(int valor);
+	public Matriz transposta();
+	public Matriz diagonalPrincipal();
+	public Matriz diagonalSecundaria();	
 }
