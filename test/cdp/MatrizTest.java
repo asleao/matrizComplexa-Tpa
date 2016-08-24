@@ -112,8 +112,17 @@ public class MatrizTest {
 		Matriz matrizA = alimentaMatriz(3, 3);
 		Matriz matrizB = alimentaMatriz(3, 3);
 		Matriz matrizMultiplicada = matrizA.multiplica(matrizB);
-		util.imprime(matrizA.getConteudo());
-//		util.imprime(matrizMultiplicada.getConteudo());
+		
+		Assert.assertEquals(new Float(6), matrizMultiplicada.get(1, 1).getValor());
+		Assert.assertEquals(new Float(6), matrizMultiplicada.get(1, 2).getValor());
+		Assert.assertEquals(new Float(6), matrizMultiplicada.get(1, 3).getValor());
+		Assert.assertEquals(new Float(12), matrizMultiplicada.get(2, 1).getValor());
+		Assert.assertEquals(new Float(12), matrizMultiplicada.get(2, 2).getValor());
+		Assert.assertEquals(new Float(12), matrizMultiplicada.get(2, 3).getValor());
+		Assert.assertEquals(new Float(18), matrizMultiplicada.get(3, 1).getValor());
+		Assert.assertEquals(new Float(18), matrizMultiplicada.get(3, 2).getValor());
+		Assert.assertEquals(new Float(18), matrizMultiplicada.get(3, 3).getValor());
+		
 		
 	}
 }

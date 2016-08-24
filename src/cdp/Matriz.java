@@ -67,7 +67,13 @@ public class Matriz implements IMatriz {
 			return null;
 		}
 	}
-
+	/**
+	 * Método responsável por setar um valor em uma posição da matriz.
+	 * @param linha
+	 * @param coluna
+	 * @param valor
+	 * @return
+	 */
 	public String set(int linha, int coluna, Float valor) {
 		if ((!(linha < 0 || linha > linhas) && !(coluna < 0 || coluna > colunas)) && !(valor.equals(new Float(0)))) {
 			Elemento elementoRetornado = this.get(linha, coluna);
@@ -98,13 +104,13 @@ public class Matriz implements IMatriz {
 	public Matriz multiplica(Matriz matriz) {
 		Matriz matrizResultante = new Matriz(linhas, colunas);
 		if ((matriz.getLinhas() == this.linhas) && (matriz.getColunas() == this.colunas)) {
-			for (int i = 1; i <= linhas; i++) {
-				for (int j = 1; j <= colunas; j++) {
-					int proxI= i+1;
-					int proxJ= j+1;
-					Float valorUm = this.get(i, j).getValor() * matriz.get(i, j).getValor();
-					Float valorDois = this.get(i, proxJ).getValor() * matriz.get(proxI, j).getValor();
-					matrizResultante.set(i, j, (valorUm+valorDois));
+			for (int linhaMat1 = 1; linhaMat1 <= linhas; linhaMat1++) {
+				for (int colunaMat2 = 1; colunaMat2 <= matriz.getColunas(); colunaMat2++) {
+					Float valor = new Float(0);
+					for (int colunaMat1 = 1; colunaMat1 <= colunas; colunaMat1++) {
+						valor += this.get(linhaMat1, colunaMat1).getValor() * matriz.get(colunaMat1, colunaMat2).getValor();
+					}					
+					matrizResultante.set(linhaMat1, colunaMat2, (valor));
 				}
 			}
 		}
