@@ -24,7 +24,7 @@ public class Matriz implements IMatriz {
 	 * @return valor encontrado
 	 */
 	public Elemento get(int linha, int coluna) {
-		if ((linha < 0 || linha >= linhas) || (coluna < 0 || coluna >= colunas)) {
+		if ((linha < 0 || linha >= linhas) && (coluna < 0 || coluna >= colunas)) {
 			return null;
 		}
 		Elemento elementoAuxiliar = null;
@@ -46,11 +46,11 @@ public class Matriz implements IMatriz {
 	public void set(int linha, int coluna, Float valor) {
 		if (!(linha < 0 || linha >= linhas) || !(coluna < 0 || coluna >= colunas) && (valor != 0)) {
 			Elemento elementoRetornado = this.get(linha, coluna);
-			elementoRetornado.setLinha(linha);
-			elementoRetornado.setColuna(coluna);
-			elementoRetornado.setValor(valor);
-			conteudo.add(elementoRetornado);
 
+			if (elementoRetornado == null) {
+				elementoRetornado = new Elemento();
+			}
+			conteudo.add(new Elemento(linha, coluna, valor));
 		}
 	}
 
@@ -88,6 +88,14 @@ public class Matriz implements IMatriz {
 	public MatrizTest diagonalSecundaria() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public LinkedList<Elemento> getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(LinkedList<Elemento> conteudo) {
+		this.conteudo = conteudo;
 	}
 
 }

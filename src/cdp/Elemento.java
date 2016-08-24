@@ -39,4 +39,10 @@ public class Elemento {
 		this.valor = valor;
 	}
 
+	@Override
+	public String toString() {
+		return "Elemento [linha=" + linha + ", coluna=" + coluna + ", valor=" + valor + "]";
+	}
+
+	
 }
