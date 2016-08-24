@@ -24,14 +24,15 @@ public class Matriz implements IMatriz {
 	 * @return valor encontrado
 	 */
 	public Elemento get(int linha, int coluna) {
-		if ((linha < 0 || linha >= linhas) && (coluna < 0 || coluna >= colunas)) {
+		if ((linha < 0 || linha > linhas) && (coluna < 0 || coluna > colunas)) {
 			return null;
 		}
 		Elemento elementoAuxiliar = null;
 		boolean elementoEncontrado = false;
 		for (int i = 0; i < conteudo.size(); i++) {
 			Elemento elementoRetornado = conteudo.get(i);
-			if (elementoRetornado.getValor() != null) {
+			if ((elementoRetornado.getValor() != null) && (elementoRetornado.getLinha() == linha)
+					&& (elementoRetornado.getColuna() == coluna)) {
 				elementoEncontrado = true;
 				elementoAuxiliar = elementoRetornado;
 			}
@@ -44,14 +45,15 @@ public class Matriz implements IMatriz {
 	}
 
 	public void set(int linha, int coluna, Float valor) {
-		if (!(linha < 0 || linha >= linhas) || !(coluna < 0 || coluna >= colunas) && (valor != 0)) {
+		if (!(linha < 0 || linha > linhas) || !(coluna < 0 || coluna > colunas) && (valor != 0)) {
 			Elemento elementoRetornado = this.get(linha, coluna);
 
 			if (elementoRetornado == null) {
 				elementoRetornado = new Elemento();
 			}
 			conteudo.add(new Elemento(linha, coluna, valor));
-		}
+		}		
+		
 	}
 
 	@Override
